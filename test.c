@@ -3,6 +3,5 @@
 
 int	main (void)
 {
-	char	str [] = "hola";
-	printf ("%d\n", ft_strlen (str));
+	ft_putendl_fd (ft_itoa (-2147483648), 1);
 }

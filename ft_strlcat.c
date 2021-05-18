@@ -1,7 +1,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-unsigned int	ft_strlcat(char * restrict dst, const char * restrict src, size_t dstsize)
+unsigned int	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	unsigned int	i;
 	unsigned int	j;
