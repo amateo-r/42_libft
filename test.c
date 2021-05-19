@@ -1,7 +1,10 @@
 #include "libft.h"
-#include <stdio.h>
+#include <string.h>
 
 int	main (void)
 {
-	ft_putendl_fd (ft_itoa (-2147483648), 1);
+	char	*str;
+
+	printf ("Resultado strstr: %s\n", strstr(str, "holas"));
+	printf ("Resultado: %s\n", ft_substr(str, 0, 2));
 }

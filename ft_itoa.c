@@ -1,4 +1,4 @@
-#include <stdlib.h>
+#include "libft.h"
 
 static int	ft_putnbr_lp (int n, char *str, int pos)
 {
@@ -13,17 +13,33 @@ static int	ft_putnbr_lp (int n, char *str, int pos)
 	return (pos);
 }
 
+static int	ft_digits (int n)
+{
+	int	count;
+
+	if (n < 0)
+		count = 1;
+	else
+		count = 0;
+	while (n != 0)
+	{
+		n /= 10;
+		count++;
+	}
+	return (count);
+}
+
 char	*ft_itoa(int n)
 {
 	char	*str;
 	int		i;
 
 	i = 0;
-	str = malloc (sizeof(n));
+	str = (char *)malloc(sizeof(char) * ft_digits(n));
 	if (str != 0)
 	{
 		if (n == -2147483648)
-			return ("-2147483648");
+			return (ft_strcpy (str, "-2147483648"));
 		if (n < 0)
 		{
 			n = -n;

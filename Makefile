@@ -1,9 +1,9 @@
-SRCS		=	test.c ft_strlen.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_itoa.c ft_strncmp.c ft_atoi.c
+SRCS		=	ft_strlen.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_itoa.c ft_strncmp.c ft_atoi.c ft_strcpy.c ft_substr.c
 
 OBJS	=	${SRCS:.c=.o}
 
 
-NAME	=	libft
+NAME	=	libft.a
 
 CC		=	cc
 
@@ -14,7 +14,8 @@ CFLAGS	=	-Wall -Wextra -Werror
 			${CC} ${CFLAGS} -c $<	-o ${<:.c=.o}
 
 ${NAME}:	${OBJS}
-			${CC} -o ${NAME} ${OBJS}
+			ar rc ${NAME} ${OBJS}
+			ranlib ${NAME}
 
 all:		${NAME}
 
@@ -25,3 +26,5 @@ fclean:		clean
 			${RM} ${NAME}
 
 re:			fclean all
+
+${NAME}:   ${OBJS}
