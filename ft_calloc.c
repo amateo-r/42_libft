@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 11:06:22 by amateo-r          #+#    #+#             */
-/*   Updated: 2021/05/24 11:09:56 by amateo-r         ###   ########.fr       */
+/*   Created: 2021/05/24 12:48:57 by amateo-r          #+#    #+#             */
+/*   Updated: 2021/05/24 13:00:09 by amateo-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include "libft.h"
+
+void	*ft_calloc (size_t count, size_t size)
 {
-	if (c < 32 || c > 126)
+	void	*data;
+
+	data = malloc (count * size);
+	if (!data)
 		return (0);
-	return (1);
+	ft_bzero(data, count * size);
+	return (data);
 }

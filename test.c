@@ -4,10 +4,10 @@
 
 int	main (void)
 {
-	//char	c = -4;
-	for (int i = 0; i < 128; i++)
-	{
-		printf ("Resultado original (%d)(%c): %d\n", i, i, tolower(i));
-		printf ("Resultado custom: %d\n\n", ft_tolower(i));
-	}
+	char	s1[4];
+	int		c = 0;
+	char	s3[4];
+
+	printf ("Resultado original: %s\n", strchr(s1, c));
+	printf ("Resultado CUSTOMIN: %s\n", ft_strchr (s3, c));
 }

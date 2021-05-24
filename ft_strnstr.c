@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 11:06:22 by amateo-r          #+#    #+#             */
-/*   Updated: 2021/05/24 11:09:56 by amateo-r         ###   ########.fr       */
+/*   Created: 2021/05/24 13:04:24 by amateo-r          #+#    #+#             */
+/*   Updated: 2021/05/24 13:04:27 by amateo-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include "libft.h"
+
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	if (c < 32 || c > 126)
-		return (0);
-	return (1);
+	size_t	j;
+	size_t	k;
+
+	if (needle == NULL)
+		return ((char *)haystack);
+	else if (!*needle)
+		return ((char *)haystack);
+	while (haystack[len] != '\0')
+	{
+		len--;
+	}
+	return (NULL);
 }
