@@ -24,6 +24,9 @@ char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strdup(const char *s1);
 char			*ft_strchr (const char *s, int c);
 char			*ft_strstr (const char *haystack, const char *needle);
+char			*ft_strnstr(const char *haystack, const char *needle,
+					size_t len);
+char			**ft_split(char const *s, char c);
 void			ft_bzero(void *s, size_t n);
 void			*ft_memset(void *b, int c, size_t len);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
