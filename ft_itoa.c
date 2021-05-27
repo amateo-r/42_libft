@@ -17,6 +17,8 @@ static int	ft_digits (int n)
 {
 	int	count;
 
+	if (n == 0)
+		return  (1);
 	if (n < 0)
 		count = 1;
 	else
@@ -35,7 +37,7 @@ char	*ft_itoa(int n)
 	int		i;
 
 	i = 0;
-	str = (char *)malloc(sizeof(char) * ft_digits(n));
+	str = (char *)malloc(sizeof(char) * (ft_digits(n) + 1));
 	if (str != 0)
 	{
 		if (n == -2147483648)
@@ -45,7 +47,8 @@ char	*ft_itoa(int n)
 			n = -n;
 			str[i++] = '-';
 		}
-		ft_putnbr_lp (n, str, i);
+		i = ft_putnbr_lp (n, str, i) + 1;
+		str[i] = '\0';
 	}
 	else
 		return (0);

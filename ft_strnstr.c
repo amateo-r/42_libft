@@ -16,16 +16,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
 
-	if (needle == NULL)
-	{
-		printf ("Entra 0 ?\n");
-		return ((char *)haystack);
-	}
-	else if (!*needle)
-	{
-		printf ("Entra 1 ?\n");
-		return ((char *)haystack);
-	}
+	if (!*needle)
+	 	return ((char *)haystack);
 	i = ft_strlen(needle);
 	while (*haystack && i <= len--)
 	{
