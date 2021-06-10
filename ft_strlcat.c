@@ -1,26 +1,36 @@
-#include "libft.h"
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/03 11:15:36 by amateo-r          #+#    #+#             */
+/*   Updated: 2021/06/03 11:15:38 by amateo-r         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-unsigned int	ft_strlcat(char *dst, const char *src, size_t dstsize)
+#include "libft.h"
+
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	k;
-	unsigned int	r;
+	size_t	i;
+	size_t	j;
+	size_t	k;
 
 	i = 0;
-	j = ft_strlen(src);
-	k = ft_strlen(dst);
-	while (src[i] && (k + i + 1) < dstsize)
-	{
-		if (k + i + 1 < dstsize)
-			dst[k + i] = src[i];
+	j = 0;
+	k = ft_strlen(src);
+	while (dst[i] && i < dstsize)
 		i++;
+	if (i != dstsize)
+	{
+		while (src[j] && j < dstsize - i - 1)
+		{
+			dst[i + j] = src[j];
+			j++;
+		}
+		dst[i + j] = '\0';
 	}
-	dst[k + i] = 0;
-	if (dstsize < k)
-		r = j + dstsize;
-	else
-		r = j + k;
-	return (r);
+	return (k + i);
 }

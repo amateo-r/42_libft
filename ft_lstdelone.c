@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inyancat <inyancat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created  2016/11/11 16:47:32 by inyancat          #+#    #+#             */
-/*   Updated  2016/11/12 20:21:42 by inyancat         ###   ########.fr       */
+/*   Created: 2021/06/08 11:03:46 by amateo-r          #+#    #+#             */
+/*   Updated: 2021/06/08 11:03:51 by amateo-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
-#include <stdarg.h>
-extern int g_log_fd;
+#include "libft.h"
 
-void error(int code, int a, const char *pattern, ...)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	va_list	va;
-
-	va_start(va, pattern);
-	(void)a;
-	vdprintf(g_log_fd, pattern, va);
-	dprintf(g_log_fd, "\n");
-	va_end(va);
-	exit(code);
+	if (!lst || !del)
+		return ;
+	(*del)(lst->content);
+	free(lst);
 }

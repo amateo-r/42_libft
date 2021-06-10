@@ -18,9 +18,7 @@ char	*ft_strstr (const char *haystack, const char *needle)
 	unsigned int	j;
 	unsigned int	k;
 
-	if (needle == NULL)
-		return ((char *)haystack);
-	else if (!*needle)
+	if (*needle == 0)
 		return ((char *)haystack);
 	i = -1;
 	while (haystack[++i] != '\0')

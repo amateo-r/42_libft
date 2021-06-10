@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/03 11:08:36 by amateo-r          #+#    #+#             */
+/*   Updated: 2021/06/03 11:08:39 by amateo-r         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int	ft_putnbr_lp (int n, char *str, int pos)
@@ -18,7 +30,7 @@ static int	ft_digits (int n)
 	int	count;
 
 	if (n == 0)
-		return  (1);
+		return (1);
 	if (n < 0)
 		count = 1;
 	else

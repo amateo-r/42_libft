@@ -6,7 +6,7 @@
 /*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 10:59:16 by amateo-r          #+#    #+#             */
-/*   Updated: 2021/05/26 11:29:14 by amateo-r         ###   ########.fr       */
+/*   Updated: 2021/06/04 12:04:03 by amateo-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static int	ft_count (char const *s, char c)
 	flag = 0;
 	while (s[++i] != '\0')
 	{
-		printf ("Para [%d] flag, char: FC(%d, %c)\n", i, flag, s[i]);
 		if (flag == 1 && s[i] == c)
 			flag = 0;
 		else if (flag == 0 && s[i] != c)
@@ -35,41 +34,42 @@ static int	ft_count (char const *s, char c)
 	return (count);
 }
 
-static void	ft_ijk(int ijk[3])
+int	ft_cl (const char *s, char c)
 {
-	int	i;
+	int	count;
 
-	i = -1;
-	while (++i < 3)
-		ijk[i] = 0;
+	count = 0;
+	while (*s != c && *s != '\0')
+	{
+		s++;
+		count++;
+	}
+	return (count);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**table;
 	int		len;
-	int		ijk[3];
 	int		count;
+	int		i;
 
+	if (s == 0)
+		return (NULL);
 	len = ft_count(s, c);
-	printf ("Len: %d\n", len);
-	table = (char **)malloc(sizeof(char *) * ft_strlen(s) - len + 1);
-	ft_ijk(ijk);
+	table = (char **)malloc (sizeof(*table) * (len + 1));
+	if (!table)
+		return (NULL);
+	i = 0;
 	while (len--)
 	{
 		count = 0;
-		while (s[ijk[0]] == c)
-			ijk[0]++;
-		ijk[1] = ijk[0];
-		while (s[ijk[0]] != c && s[ijk[0]] != '\0')
-		{
-			ijk[0]++;
-			count++;
-		}
-		table[ijk[2]] = malloc(count + 1);
-		table[ijk[2]] = ft_substr (s, ijk[1], count);
-		ijk[0]++, ijk[2]++;
+		while (*s == c && *s != '\0')
+			s++;
+		table[i] = ft_substr ((const char *)s, 0, ft_cl((const char *)s, c));
+		s = s + ft_cl (s, c);
+		i++;
 	}
-	table[ijk[2]] = NULL;
+	table[i] = 0;
 	return (table);
 }

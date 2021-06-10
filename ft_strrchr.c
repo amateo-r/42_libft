@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/03 11:10:24 by amateo-r          #+#    #+#             */
-/*   Updated: 2021/06/03 11:10:26 by amateo-r         ###   ########.fr       */
+/*   Created: 2021/06/04 11:07:51 by amateo-r          #+#    #+#             */
+/*   Updated: 2021/06/04 11:21:52 by amateo-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int c)
+#include "libft.h"
+
+char	*ft_strrchr(const char *s, int c)
 {
-	if (c >= 97 && c <= 122)
-		return (c - 32);
-	return (c);
+	const char	*dst;
+
+	dst = s;
+	while (*dst)
+		dst++;
+	if (c == '\0')
+		return ((char *)dst);
+	while (dst-- != s)
+	{
+		if (*dst == (char)c)
+			return ((char *)dst);
+	}
+	return (NULL);
 }

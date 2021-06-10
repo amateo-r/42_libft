@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/03 11:10:24 by amateo-r          #+#    #+#             */
-/*   Updated: 2021/06/03 11:10:26 by amateo-r         ###   ########.fr       */
+/*   Created: 2021/06/08 12:09:35 by amateo-r          #+#    #+#             */
+/*   Updated: 2021/06/08 12:09:37 by amateo-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int c)
+#include "libft.h"
+
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if (c >= 97 && c <= 122)
-		return (c - 32);
-	return (c);
+	t_list	*lst_new;
+	t_list	*lst_newelemt;
+
+	if (!f || !del || !lst)
+		return (NULL);
+	lst_new = NULL;
+	while (lst)
+	{
+		lst_newelemt = ft_lstnew(f(lst->content));
+		if (!lst_newelemt)
+			ft_lstclear(&lst_new, del);
+		ft_lstadd_back(&lst_new, lst_newelemt);
+		lst = lst->next;
+	}
+	return (lst_new);
 }

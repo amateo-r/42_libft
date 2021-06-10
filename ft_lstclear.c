@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
+/*   By: amateo-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/03 11:10:24 by amateo-r          #+#    #+#             */
-/*   Updated: 2021/06/03 11:10:26 by amateo-r         ###   ########.fr       */
+/*   Created: 2021/06/08 11:29:57 by amateo-r          #+#    #+#             */
+/*   Updated: 2021/06/08 12:00:55 by amateo-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int c)
+#include "libft.h"
+
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (c >= 97 && c <= 122)
-		return (c - 32);
-	return (c);
+	t_list	*lst_temp;
+
+	if (!lst || !del)
+		return ;
+	while (*lst)
+	{
+		lst_temp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = lst_temp;
+	}
+	*lst = NULL;
 }

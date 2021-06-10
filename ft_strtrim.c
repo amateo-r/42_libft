@@ -15,17 +15,17 @@
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*dst;
-	int		s1_len;
-	int		set_len;
+	int		i;
 
-	s1_len = ft_strlen(s1);
-	set_len = ft_strlen(set);
-	if (ft_strncmp(set, s1, set_len) != 0)
-		return ("\0");
-	if (ft_strncmp(set, s1 + (s1_len - set_len), set_len) == 0)
-		return ("\0");
-	dst = (char *)malloc (sizeof(char) * s1_len - set_len * 2);
-	dst = (char *)s1 + set_len;
-	dst = ft_substr(dst, 0, ft_strlen(dst) - set_len);
+	if (!s1 || !set)
+		return (NULL);
+	while (ft_strchr(set, *s1) && *s1)
+		s1++;
+	if (*s1 == '\0')
+		return (ft_strdup(""));
+	i = ft_strlen(s1);
+	while (ft_strchr(set, s1[i]))
+		i--;
+	dst = ft_substr(s1, 0, i + 1);
 	return (dst);
 }
