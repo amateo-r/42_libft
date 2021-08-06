@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	ft_putnbr_lp (int n, char *str, int pos)
+static int	ft_putnbr_lp(int n, char *str, int pos)
 {
 	if (n > 9)
 	{
@@ -25,7 +25,7 @@ static int	ft_putnbr_lp (int n, char *str, int pos)
 	return (pos);
 }
 
-static int	ft_digits (int n)
+static int	ft_digits(int n)
 {
 	int	count;
 
