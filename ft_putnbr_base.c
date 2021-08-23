@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_uitoa.c                                         :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/09 13:04:30 by amateo-r          #+#    #+#             */
-/*   Updated: 2021/08/09 13:07:49 by amateo-r         ###   ########.fr       */
+/*   Created: 2021/08/10 13:30:23 by amateo-r          #+#    #+#             */
+/*   Updated: 2021/08/10 13:30:25 by amateo-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* ft_itoa function for unsigned int number. */
-char	*ft_uitoa(unsigned int nb)
+int	ft_putnbr_base(unsigned long n, char *base)
 {
-	char	*str;
-	int		len;
+	unsigned long	len;
+	unsigned long	num;
+	int				l;
 
-	len = ft_digits_base(nb, 10);
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
-	str[len--] = '\0';
-	if (nb == 0)
-		str[len] = 0 + '0';
-	while (nb > 0)
+	l = 1;
+	num = n;
+	len = ft_strlen(base);
+	if (num == 0)
 	{
-		str[len--] = nb % 10 + '0';
-		nb /= 10;
+		ft_putchar_fd('0', 1);
+		return (l);
 	}
-	return (str);
+	if (num >= len)
+	{
+		l += ft_putnbr_base(num / len, base);
+		ft_putchar_fd(base[num % len], 1);
+	}
+	else if (num < len)
+		ft_putchar_fd(base[num], 1);
+	return (l);
 }
