@@ -38,6 +38,7 @@ int				ft_tolower(int c);
 int				ft_lstsize(t_list *lst);
 int				ft_digits(int n);
 int				ft_digits_base(unsigned long n, int base);
+int				ft_strffnotof(const char *str, int c);
 size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 char			*ft_strcpy(char *dst, const char *src);
