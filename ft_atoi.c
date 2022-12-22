@@ -37,9 +37,7 @@ static int	ch_size(const char *str, int sign, int i)
 		return (0);
 	else if (ft_strlen(str) > 18 && count > 18)
 		return (-1);
-	if (sign == -1)
-		count++;
-	if ((size_t)count != ft_strlen(str))
+	if ((size_t)i != ft_strlen(str))
 		return (-1);
 	return (1);
 }
